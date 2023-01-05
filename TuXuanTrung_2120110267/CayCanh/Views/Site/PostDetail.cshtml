@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<link href="~/public/icon-font/fontawesome.com/css/all.min.css" rel="stylesheet" />
+
+<section class="maincontent clearfix">
+    <div class="container my-3 py-3">
+        <div class="row">
+            <div class="col-md-12 col-lg-9">
+                <h5 class="title-post">@Model.Name</h5>
+                <p>@Model.Detail</p>
+            </div>
+            <div class="col-lg-3 text-bg-light">
+                <h3 class="text-bg-success text-center" >Bài viết khác</h3>
+                @foreach (var post in ViewBag.Post_other)
+                {
+                    <div class="row my-2">
+                        <div class="col-md-3">
+                            <a href="~/@post.Slug">
+                                <img src="~/public/image/post/@post.Img"
+                                     class="img-fluid" alt="..." />
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <h6><a class="text-dark" style="text-decoration: none" href="~/@post.Slug">@post.Name</a></h6>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div><br /><br /><br /><br />
+        <div class="tabs_section_container">
+
+            <div class="container">
+                <div id="tab_3" class="tab_container">
+                    <div class="row">
+
+                        <!-- Thêm đánh giá -->
+
+                        <div class="col-lg-6 add_review_col">
+                            <div class="add_review">
+                                <form id="review_form" action="post">
+                                    <div>
+                                        <h5>Thêm đánh giá</h5>
+                                        <input id="review_name" class="form_input input_name" type="text" name="name" placeholder="Tên*" required="required" data-error="Name is required."><br /><br />
+                                        <input id="review_email" class="form_input input_email" type="email" name="email" placeholder="Email*" required="required" data-error="Valid email is required.">
+                                    </div><br />
+                                    <div>
+                                        <textarea id="review_message" class="input_review" name="message" placeholder="Đánh giá của bạn" rows="4" required data-error="Please, leave us a review."></textarea>
+                                    </div>
+                                    <div class="text-left text-sm-right">
+                                        <a href="#">
+                                            <button class="btn btn-success text-dark" type="submit">Gửi tin</button>
+                                        </a>
+                                    </div>
+                                    <br />
+                                    <br />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--<div class="row">
+                <div class="col">-->
+<!-- Thanh đường dẫn -->
+<!--<div class="breadcrumbs d-flex flex-row align-items-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+                <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
+            </ul>
+        </div>
+    </div>
+</div>-->

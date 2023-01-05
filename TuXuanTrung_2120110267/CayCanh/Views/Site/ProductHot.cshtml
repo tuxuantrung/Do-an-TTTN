@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ProductHot";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <div class="category-title position-relative">
+                    <h2 class="text-center text-uppercase">
+                        <a href="" /a>
+                    </h2>
+                </div>
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-4 md-4">
+                            <div class="item product-item">
+                                <div class="card" style="width: 100%">
+                                    <a href="product_detail.html">
+                                        <img class="img-fluid card-img-top" src="~/public/image/product/@product.Img" alt="@product.Img" />
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            <a href="~/@product.Slug">@product.Name"></a>
+                                        </h5>
+                                        <div class="text-center">
+                                            <div class="product-price">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <strong>
+                                                            <span class="price text-success">@product.Price <sup>đ</sup></span>
+                                                            <del><span class="text-danger">@product.PriceSale</span></del><sup>đ</sup>
+                                                        </strong>
+                                                    </div>
+                                                    <div class=" btn-group w-100" role="group" aria-label="Basic example" col-md-3 text-end">
+                                                        <a class="cart btn btn-outline-info" href="@Url.Action("AddCart", "Cart", new { @productid = product.Id})">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

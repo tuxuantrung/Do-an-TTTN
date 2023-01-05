@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+
+<div class="container">
+    <h2 class="text-center text-success py-3">THANH TOÁN</h2>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="py-4">
+                <h5>THÔNG TIN THANH TOÁN</h5>
+            </div>
+            <div class="row">
+                @using (Html.BeginForm("Index", "Payment", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Tên người nhận *</label>
+                        <input name="shipName" required class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input name="mobile" class="form-control" required maxlength="11" minlength="9" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ *</label>
+                        <input name="address" required class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ email *</label>
+                        <input type="email" name="email" required class="form-control" />
+                    </div>
+                    <button type="submit" class="btn">Gửi đơn hàng</button>
+                }
+            </div>
+            <div>
+                <h4>THÔNG TIN BỔ SUNG</h4>
+                <div>
+                    <p>Ghi chú đơn hàng (Tùy chọn)</p>
+                    <span class="woocommerce-input-wrapper w-100">
+                        <textarea name="order_comments" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="5" cols="83">
+                </textarea>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 text-bg-light">
+            <h4 class="py-4">ĐƠN HÀNG CỦA BẠN</h4>
+            <div class="row">
+                <div class="col-md-8 col-lg-8">
+                    <h6>Sản phẩm</h6><br />
+                    <tbody>
+                        <tr class="cart_item">
+                            <td class="product-name">
+                                Cây Hạnh Phúc <strong class="product-quantity">×&nbsp;1</strong>
+                            </td>
+                        </tr>
+                    </tbody><br /><br />
+                    <tfoot>
+                        <tr class="cart-subtotal">
+                            <th>Tạm tính</th>
+                        </tr>
+                        <br />
+                        <br />
+                        <tr class="order-total">
+                            <th>Tổng</th>
+                        </tr>
+                    </tfoot>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <h6>Tạm tính</h6><br />
+                    <td class="product-total">
+                        <span class="woocommerce-Price-amount amount"><bdi>150.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                    </td><br /><br />
+                    <td>
+                        <span class="woocommerce-Price-amount amount"><bdi>150.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                    </td><br /><br />
+                    <td>
+                        <strong>
+                            <span class="woocommerce-Price-amount amount">
+                                <bdi>150.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi>
+                            </span>
+                        </strong>
+                    </td>
+                </div>
+            </div><br />
+            <div id="payment" class="woocommerce-checkout-payment">
+                <ul class="wc_payment_methods payment_methods methods">
+                    <li class="wc_payment_method payment_method_cod">
+                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" checked="checked" data-order_button_text="">
+                        <label for="payment_method_cod">
+                            Trả tiền mặt khi nhận hàng
+                        </label>
+                        @*<div class="payment_box payment_method_cod">
+                                <p>Trả tiền mặt khi giao hàng</p>
+                            </div>*@
+                    </li>
+                    <br />
+                    <li class="wc_payment_method payment_method_bacs">
+                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" data-order_button_text="">
+
+                        <label for="payment_method_bacs">
+                            Chuyển khoản ngân hàng
+                        </label>
+                        <div class="payment_box payment_method_bacs" style="display:none;">
+                            <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="form-row place-order">
+                    <noscript>
+                        Trình duyệt của bạn không hỗ trợ JavaScript, hoặc nó bị vô hiệu hóa, hãy đảm bảo bạn nhấp vào <em>Cập nhật giỏ hàng</em> trước khi bạn thanh toán. Bạn có thể phải trả nhiều hơn số tiền đã nói ở trên, nếu bạn không làm như vậy.<br />
+                        <button type="submit" class="button alt wp-element-button" name="woocommerce_checkout_update_totals" value="Cập nhật tổng">
+                            Cập nhật tổng
+                        </button>
+                    </noscript>
+                    <div class="woocommerce-terms-and-conditions-wrapper">
+                    </div>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <a class="btn btn-success" href="~/thanh-toan">Thanh toán</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                    @*<button type="submit" class="btn btn-success">Gửi đơn hàng</button>*@
+                    <input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="c7bfbbe0ec"><input type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />

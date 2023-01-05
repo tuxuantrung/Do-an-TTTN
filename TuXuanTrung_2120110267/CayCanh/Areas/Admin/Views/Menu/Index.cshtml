@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CayCanh.Models.Menu>
+
+@{
+    ViewBag.Title = "Tất cả menu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="stylesheet" href="~/public/icon-font/fontawesome.com/css/all.min.css" />
+    ;
+}
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger">
+                        TẤT CẢ MENU
+                    </strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Create","Menu")" class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i>Thêm</a>
+                    <a href="@Url.Action("Trash","Menu")" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i>Thùng rác</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.Partial("Message")
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:20px;" class="text-center">#</th>
+                    <th style="width:150px;" class="text-center">Tên menu</th>
+                    <th style="width:150px;" class="text-center">Liên kết</th>
+                    <th style="width:150px;" class="text-center">Vị trí</th>
+                    <th style="width:150px;" class="text-center">Chức năng</th>
+                    <th style="width:20px;" class="text-center">Id</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Link</td>
+                        <td>@item.Position</td>
+                        <td class="text-center">
+                            @if (item.Status == 1)
+                            {
+                                <a href="@Url.Action("Status","Menu",new { id = item.Id })
+                                   " class="btn btn-sm btn-success">
+                                    <i class="fa-solid fa-toggle-on"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Status","Menu",new { id = item.Id })
+                                   " class="btn btn-sm btn-danger">
+                                    <i class="fa-solid fa-tongle-off"></i>
+                                </a>
+                            }
+                            <a href="@Url.Action("Edit","Menu",new { id = item.Id })" class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="@Url.Action("Details","Menu",new { id = item.Id })" class="btn btn-sm btn-info">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="@Url.Action("Delete","Menu",new { id = item.Id })" class="btn btn-sm btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">@item.Id</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-footer text-right">
+            <a href="@Url.Action("Create","Menu")" class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i>Thêm</a>
+            <a href="@Url.Action("Trash","Menu")" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i>Thùng rác</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CayCanh.Models.Product>
+@{
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+
+    var totalPage = (int)ViewBag.TotalPage;
+    //var category = ViewBag.Category;
+    ViewBag.Title = "Tất cả sản phẩm";
+}
+
+
+
+<section class="maincontent clearfix main mt-2">
+    <div class="container my-3 py-4">
+        <div class="row">
+            <div class=" col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ProductBuyHot", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ChooseByPrice", "Module")
+                </div>
+
+                @*<div class="sidebar py-2">
+                        @Html.Action("ProductBuyHot1", "Module")
+                    </div>*@
+                <div class="sidebar py-2">
+                    @Html.Action("ProductInterested", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ContactSidebar", "Module")
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="category-tilte position-relative">
+                    <h3 class="text-center text-uppercase text-success">Tất cả sản phẩm</h3>
+                </div>
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-3 md-3">
+                            <div class="item product-item">
+                                <div class="card" style="width: 100%">
+                                    <a href="~/@product.Slug">
+                                        <img src="~/public/image/product/@product.Img"
+                                             class="img-fluid card-img-top" alt="..." />
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            <a class="text-dark" style="text-decoration: none" href="~/@product.Slug">@product.Name</a>
+                                        </h5>
+                                        <h6 class="text-center">
+                                            <strong>
+                                                <del><span class="price text-black-50">@string.Format("{0:0,0}", product.Price)</span></del>
+                                                <span class="text-danger">@string.Format("{0:0,0}", product.PriceSale)</span><sup>đ</sup>
+                                            </strong>
+                                        </h6>
+                                        <div class="btn-groupw w-100" role="group" aria-label="Basic example">
+                                            @*<a class="cart" href="@Url.Action("AddCart", "Cart", new { @productid = product.Id})">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                </a>*@
+                                            <a href="@Url.Action("AddCart", "Cart", new { @productid = product.Id})"
+                                               class="form-control btn btn-success">Đặt mua</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Phân trang-->
+<div class="row">
+    <div class="col-12">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                @for (var i = 1; i <= totalPage; i++)
+                {
+                    <li class="page-item"><a class="page-link" href="/Site/Product?page=@i">@i</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

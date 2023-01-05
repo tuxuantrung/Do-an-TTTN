@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    <link href="~/public/css/LayoutSite.css" rel="stylesheet" />
+}
+
+
+<div class="super_container">
+    <div class="container dangnhap_container">
+        <div class="row">
+            <div class="col-lg-12 dangnhap_col py-4">
+                <div class="dangnhap_contents">
+                    <div id="login-form-popup" class="lightbox-content">
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <div class="account-container lightbox-inner">
+                            <div class="col2-set row row-divided row-large" id="customer_login">
+                                <div class="col-lg-6 get_in_touch_col">
+                                    <div class="account-login-inner">
+                                        <h3 class="uppercase"><strong>Đăng nhập</strong></h3>
+                                        <form class="woocommerce-form woocommerce-form-login login" method="post">
+                                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                <strong>
+                                                    <label for="username">
+                                                        Tên tài khoản hoặc địa chỉ email&nbsp;
+                                                        <span class="required">*</span>
+                                                    </label><br />
+                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
+                                                           name="username" id="username" autocomplete="username" value="">
+                                                </strong>
+                                            </p>
+                                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                <strong>
+                                                    <label for="password">
+                                                        Mật khẩu&nbsp;<span class="required">*</span>
+                                                    </label><br />
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password">
+                                                </strong>
+                                            </p>
+                                            <p class="form-row">
+                                                <strong>
+                                                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                                                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever">
+                                                        <span>Ghi nhớ mật khẩu</span>
+                                                    </label>
+                                                    <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="9d24472210">
+                                                    <input type="hidden" name="_wp_http_referer" value="/gioi-thieu/"><br />
+                                                    <button type="submit" class="woocommerce-button button woocommerce-form-login__submit btn btn-success" name="login" value="Đăng nhập">Đăng nhập</button>
+                                                </strong>
+                                            </p>
+                                            <p class="woocommerce-LostPassword lost_password">
+                                                <strong>
+                                                    <a href="#" class="woocommerce-privacy-policy-link" style="text-decoration: none" target="_blank">
+                                                        Quên mật khẩu?
+                                                    </a>
+                                                </strong>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 get_in_touch_col">
+                                    <div class="account-register-inner">
+                                        <h3 class="uppercase">
+                                            <strong>Đăng ký</strong>
+                                        </h3>
+                                        <form method="post" class="woocommerce-form woocommerce-form-register register">
+                                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                <strong>
+                                                    <label for="reg_email">
+                                                        Địa chỉ email&nbsp;
+                                                        <span class="required">*</span>
+                                                    </label><br />
+                                                    <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="">
+                                                </strong>
+                                            </p>
+                                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                <strong>
+                                                    <label for="password">
+                                                        Mật khẩu&nbsp;<span class="required">*</span>
+                                                    </label><br />
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password">
+                                                </strong>
+                                            </p>
+                                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                <strong>
+                                                    <label for="password">
+                                                        Nhập lại mật khẩu&nbsp;<span class="required">*</span>
+                                                    </label><br />
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password">
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    Một liên kết để đặt mật khẩu mới sẽ được gửi đến địa chỉ email của bạn.
+                                                </strong>
+                                            </p>
+                                            <div class="woocommerce-privacy-policy-text">
+                                                <p>
+                                                    <strong>
+                                                        Thông tin cá nhân của bạn sẽ được sử dụng để tăng trải nghiệm sử dụng website, quản lý truy cập vào tài khoản của bạn, và cho các mục đích cụ thể khác được mô tả trong
+                                                        <a href="#" class="woocommerce-privacy-policy-link" style="text-decoration: none" target="_blank">
+                                                            chính sách riêng tư.
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                            <p class="woocommerce-form-row form-row">
+                                                <strong>
+                                                    <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="ed20d15da8">
+                                                    <input type="hidden" name="_wp_http_referer" value="/gioi-thieu/">
+                                                    <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit btn btn-success" name="register" value="Đăng ký">
+                                                        Đăng ký
+                                                    </button>
+                                                </strong>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="mfp-content">
+
+    </div>*@

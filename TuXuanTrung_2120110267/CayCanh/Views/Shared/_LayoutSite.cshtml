@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/public/icon-font/fontawesome.com/css/all.css" rel="stylesheet" />
+    <link href="~/public/css/LayoutSite.css" rel="stylesheet" />
+    <script src="~/public/plugins/jquery/jquery.min.js"></script>
+    <script src="~/public/dist/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="ISYlTJ7K"></script>
+    <section class="cm-header clearfix">
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-md-2 logo">
+                    <img src="~/public/image/logo.png" alt="Logo" class="img-fluid" />
+                </div>
+                @*@using (Html.BeginForm())
+                {
+                    <div class="form-group form-inline">
+                        @Html.TextBox("SearchString", "", new {@class = "form-control"})
+                        <input type="submit" class="btn btn-default" value="Search"/>
+                    </div>
+                }*@
+
+                <div class="col-md-6 py-3">
+                    <form class="d-flex" role="search">
+                        <div class="col-md-10">
+                            @Html.TextBox("SearchString", "", new { @class = "form-control" })
+                            @*<input class="form-control me-2" type="text" name="searchkey" placeholder="Tìm kiếm..." aria-label="Search">*@
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-success text-white" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2 py-3 border-right">
+                    <a href="https://localhost:44348/dang-nhap">
+                        <button class="btn btn-success text-white" type="submit">Đăng nhập</button>
+                    </a>
+                </div>
+                <div class="col-md-2 py-3">
+                    <a class="text-white btn btn-success" style="text-decoration: none" href="https://localhost:44348/gio-hang">
+                        Giỏ hàng
+                        <i class="fa fa-cart-plus"></i>
+                    </a>
+
+
+
+                    @*<li class="cartgroup">
+            <div class="mini-cart text-xs-center">
+                <a class="img_hover_cart d-block d-xl-flex flex-column align-items-center" href="/cart" title="Giỏ hàng">
+                    <div class="cart-icon">
+                        <img src="//bizweb.dktcdn.net/100/419/628/themes/877810/assets/cart-icon.png?1667287019974" width="24" height="24" alt="cart_icon">
+                        <span class="count_item count_item_pr">0</span>
+                    </div>
+                    <span class="d-xl-block d-none mt-1">Giỏ hàng</span>
+                </a>
+            </div>
+        </li>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Html.Action("MainMenu", "Module")
+    @*@Html.Action("Slideshow", "Module")*@
+
+
+    <section class="maincontent clearfix">
+        @RenderBody()
+    </section>
+    <section class="footer clearfix bg-footer py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3 class="text-light">Về chúng tôi</h3>
+                    <div class="text-light">
+                        Cây Xinh là thương hiệu dẫn đầu trong lĩnh vực sản xuất &
+                        cung cấp các loại Cây Cảnh Để Bàn, Sen Đá, Xương Rồng &
+                        Tiểu cảnh Terrarium trang trí nội thất, văn phòng.
+                    </div>
+                    <div class="text-light">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-light">Địa chỉ cửa hàng</h3>
+                    <div class="text-light">
+                        <ul>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: 45 Tân Lập, Đông Hòa, Dĩ An, Bình Dương.
+                            </li>
+                            <li>
+                                <p>
+                                    <i class="fas fa-phone-square"></i> Số Điện Thoại: 0925794461
+
+                                </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i> Email: cayxinh@gmail.com
+                            </li>
+                            <li>
+                                <i class="fa-brands fa-facebook"></i> Fanpage:
+                                <a class="text-white" style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100069155661831"> https://www.facebook.com/profile.php?id=100069155661831 </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-light">Thời gian làm việc</h3>
+                    <div class="text-light">
+                        Cửa hàng làm việc từ 8-19h hàng ngày, nếu quý khách muốn mua số lượng lớn hoặc đặt sỉ vui lòng liên hệ trực tiếp qua SĐT 0868357939
+                        Xin cảm ơn!
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-light">Liên Hệ</h3>
+                    <div class="text-light">
+                        <div class="row">
+                            <div class="col">
+                                <div id="google_map">
+                                    <div class="map_container">
+                                        <div id="map">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.157016584766!2d106.80703551474981!3d10.875659592254225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8aed3808359%3A0xe933ad142813142e!2zNDUgVMOibiBM4bqtcCwgxJDDtG5nIEhvw6AsIETEqSBBbiwgQsOsbmggRMawxqFuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1669830475198!5m2!1svi!2s"
+                                                    width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright clearfix bg-footer py-2">
+        <div class="container text-center text-light border-top border-light">
+            Copyright 2022 © Thiết kế bởi Từ Xuân Trung
+        </div>
+    </section>
+    <script src="~/public/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Footer", required: false)
+</body>
+</html>

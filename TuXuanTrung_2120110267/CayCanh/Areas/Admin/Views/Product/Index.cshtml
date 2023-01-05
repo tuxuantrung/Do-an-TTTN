@@ -1,0 +1,107 @@
+﻿@*@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CayCanh.Models.Product>*@
+
+
+@model IEnumerable<CayCanh.Models.Product>
+
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="stylesheet" href="~/public/icon-font/fontawesome.com/css/all.min.css" />
+    ;
+}
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger">
+                        TẤT CẢ SẢN PHẨM
+                    </strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Create","Product")" class="btn btn-sm btn-success">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </a>
+                    <a href="@Url.Action("Trash","Product")" class="btn btn-sm btn-danger">
+                        <i class="fa-solid fa-trash"></i>Thùng rác
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.Partial("Message")
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:20px;" class="text-center">#</th>
+                    <th style="width:100px;" class="text-center">Hình ảnh</th>
+                    <th style="width:100px;" class="text-center">Tên sản phẩm</th>
+                    <th style="width:100px;" class="text-center">Slug</th>
+                    <th style="width:100px;">Gía bán</th>
+                    <th style="width:100px;">Gía sale</th>
+                    <th style="width:20px;" class="text-center">Số lượng</th>
+                    <th style="width:100px;" class="text-center">Chức năng</th>
+                    <th style="width:20px;" class="text-center">Mã loại</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <img src="~/public/image/product/@item.Img" class="img-fluid" />
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Slug</td>
+                        <td>@item.Price</td>
+                        <td>@item.PriceSale</td>
+                        <td>@item.Number</td>
+                        @*<td class="text-center">@item.CreateAt</td>*@
+                        <td class="text-center">
+                            @if (item.Status == 1)
+                            {
+                                <a href="@Url.Action("Status","Product",new { id = item.Id })
+                                           " class="btn btn-sm btn-success">
+                                    <i class="fa-solid fa-toggle-on"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Status","Product",new { id = item.Id })
+                                           " class="btn btn-sm btn-danger">
+                                    <i class="fa-solid fa-tongle-off"></i>
+                                </a>
+                            }
+                            <a href="@Url.Action("Edit","Product",new { id = item.Id })" class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="@Url.Action("Details","Product",new { id = item.Id })" class="btn btn-sm btn-info">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="@Url.Action("Delete","Product",new { id = item.Id })" class="btn btn-sm btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+                        </td>
+                        <td class="text-center">@item.Id</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-footer text-right">
+            <a href="@Url.Action("Create","Product")" class="btn btn-sm btn-success">
+                <i class="fa-solid fa-plus"></i>Thêm
+            </a>
+            <a href="@Url.Action("Trash","Product")" class="btn btn-sm btn-danger">
+                <i class="fa-solid fa-trash"></i>Thùng rác
+            </a>
+        </div>
+    </div>
+</section>
+@*Trang @Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new {page, currentFilter = ViewBag.CurrentFilter }))*@
+

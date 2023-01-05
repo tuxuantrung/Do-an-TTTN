@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    <link href="~/public/icon-font/fontawesome.com/css/all.min.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <h4 class="text-center py-3">Giỏ Hàng Của Tôi</h4>
+    @if (Model != null)
+    {
+        using (Html.BeginForm("CartUpdate ", "Giohang", FormMethod.Post))
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:80px;">Mã SP</th>
+                        <th style="width:90px;">Hình</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ decimal tongtien = 0;}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>
+                                <img src="~/public/image/product/@item.Image" class="img-fluid" />
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.Price.ToString("#,##0")</td>
+                            <td><input name="Qty" value="@item.Qty" type="number" min="1" /></td>
+                            @*<td>@item.Amount.ToString("#,##0")</td>*@
+                            <td class="text-end">@string.Format("{0:0,0}", item.Amount)</td>
+                            <td>
+                                <a href="@Url.Action("CartDel","Cart",new {id = item.Id})">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        tongtien += item.Amount;
+                    }
+                    <tr>
+                        <td colspan="4">
+                            <a href="@Url.Action("Home","Site")" class="btn btn-sm btn-success">Mua thêm sản phẩm</a>
+                            <button class="btn btn-sm btn-info" name="CAPNHAT" type="submit">Cập nhật</button>
+                            <a href="@Url.Action("CartDelAll","Giohang")" class="btn btn-sm btn-danger">Xóa đơn hàng</a>
+                            <a href="@Url.Action("Index","Payment")" class="btn btn-sm btn-success">Thanh toán</a>
+                        </td>
+                        <td class="text-end">Thành tiền</td>
+                        <td colspan="2" class="text-end">@string.Format("{0:0,0}", tongtien)</td>
+                    </tr>
+                </tbody>
+                @*<tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <a class="btn btn-success" href="~/thanh-toan">Thanh toán</a>
+                        </td>
+                    </tr>
+                </tfoot>*@
+            </table>
+         }
+    }
+    else
+    {
+        <p class="text-center text-black-50">Chưa Có Sản Phẩm Trong Giỏ Hàng</p>
+        <div class="text-center">
+            <a href="https://localhost:44348/">
+                <button class="btn btn-success text-light" type="submit">Về Trang Chủ</button>
+            </a>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    }
+</div>
+

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CayCanh.Models.Post>
+@using CayCanh.Libraries
+
+@{
+    var totalPage = (int)ViewBag.TotalPage;
+    ViewBag.Title = "Tất cả bài viết";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+
+}
+
+<section class="maincontent clearfix main mt-2">
+    <div class="container my-3 py-4">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="category-tilte position-relative">
+                    <h3 class="text-center text-uppercase text-success">Tất cả bài viết</h3>
+                </div>
+                @foreach (var post in Model)
+                {
+                    <div class="row my-4">
+                        <div class="col-md-3">
+                            <a href="~/@post.Slug">
+                                <img src="~/public/image/post/@post.Img"
+                                     class="img-fluid" alt="..." />
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <h5><a class="text-dark" style="text-decoration: none" href="~/@post.Slug">@post.Name</a></h5>
+                            <p>@MyString.str_limit(post.Detail, 500)</p>
+                            <div class="text-right"><a style="text-decoration: none" href="~/@post.Slug">Xem thêm</a></div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="col-lg-3 col-md-12 col-sm-12 py-5">
+                <h3 class="text-bg-success text-center">Bài viết mới</h3>
+                @foreach (var post in Model)
+                {
+
+                    <div class="row my-2">
+                        <div class="col-md-3">
+                            <a href="~/@post.Slug">
+                                <img src="~/public/image/post/@post.Img"
+                                     class="img-fluid" alt="..." />
+                            </a>
+
+                        </div>
+                        <div class="col-md-9">
+                            <h6><a class="text-dark" style="text-decoration: none" href="~/@post.Slug">@post.Name</a></h6>
+                        </div>
+                    </div>
+                }
+
+                @*<ul>
+                    @foreach (var post in ViewBag.Post_other)
+                    {
+                        <li><a href="~/@post.Slug">@post.Name</a></li>
+                    }
+                </ul>*@
+            </div>
+        </div>
+    </div>
+</section>
+<!--Phân trang-->
+<div class="row">
+    <div class="col-12">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                @for (var i = 1; i <= totalPage; i++)
+                {
+                    <li class="page-item"><a class="page-link" href="/Site/Post?page=@i">@i</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+

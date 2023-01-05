@@ -1,0 +1,49 @@
+﻿@model CayCanh.Models.Contact
+
+@{
+    ViewBag.Title = "Xóa vĩnh viễn";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="stylesheet" href="~/public/icon-font/fontawesome.com/css/all.min.css" />
+;
+}
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger">
+                        THÙNG RÁC LIÊN HỆ
+                    </strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index","Contact")" class="btn btn-sm btn-info">
+                        <i class="fa-solid fa-rotate-left"></i>Quay về danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:20px;" class="text-center">#</th>
+                    <th style="width:20px;" class="text-center">Mã khách hàng</th>
+                    <th style="width:100px;" class="text-center">Tên khách hàng</th>
+
+                    <th style="width:100px;" class="text-center">Email</th>
+
+                    <th style="width:100px;" class="text-center">Số điện thoại</th>
+
+                    <th style="width:100px;" class="text-center">Chi tiết</th>
+                    <th style="width:200px;" class="text-center">Chức năng</th>
+                    <th style="width:20px;" class="text-center">Mã loại</th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="card-footer text-right">
+            <a href="@Url.Action("Index","Contact")" class="btn btn-sm btn-info">
+                <i class="fa-solid fa-rotate-left"></i>Quay về danh sách
+            </a>
+        </div>
+    </div>
+</section>

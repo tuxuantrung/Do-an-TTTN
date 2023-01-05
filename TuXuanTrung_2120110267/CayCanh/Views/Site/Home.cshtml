@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CayCanh.Models.Category>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    <link href="~/public/css/LayoutSite.css" rel="stylesheet" />
+    <link href="~/public/icon-font/fontawesome.com/css/all.min.css" rel="stylesheet" />
+
+}
+@section footer{
+
+    <script src="~/public/plugins/jquery/jquery.js"></script>
+    <script src="~/public/plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <link href="~/public/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/public/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                dost: false,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 2,
+                    },
+                    600: {
+                        items: 3,
+                    },
+                    1000: {
+                        items: 1,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
+    </script>
+}
+
+
+@Html.Action("Slideshow", "Module")
+
+<section class="maincontent clearfix main mt-2 text-bg-light">
+    <div class="container my-2 py-4">
+        <div class="row">
+            <div class=" col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ProductBuyHot", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ChooseByPrice", "Module")
+                </div>
+
+                @*<div class="sidebar py-2">
+                        @Html.Action("ProductBuyHot1", "Module")
+                    </div>*@
+                <div class="sidebar py-2">
+                    @Html.Action("ProductInterested", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ContactSidebar", "Module")
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <div class="row">
+                    @foreach (var category in Model)
+                    {
+
+                        <div class="product-home">
+                            <h3 class="text-bg-success text-uppercase text-center my-1 category-litle">
+                                <a class="text-dark" style="text-decoration: none"
+                                   href="@Url.Action("ProductCategory", "Site", new { @catid = category.Id })">@category.Name</a>
+                            </h3>
+
+                            @Html.Action("ProductHome", "Site", new { @catid = category.Id })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+

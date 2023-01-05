@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CayCanh.Models.Category>
+
+    <script src="~/public/css/LayoutSite.css"></script>
+
+
+<div class="listcategory ">
+    <div class="card" style="width:100%;">
+        <div class="text-bg-success card-header text-center">
+            Danh mục sản phẩm
+        </div>
+        <div class="panel-body">
+            <ul class="list-group list-group-flush text-center">
+                @foreach (var category in Model)
+                {
+
+                    <h7>
+                        <li class="list-group-item">
+                            <a class="text-dark" style="text-decoration: none" href="~/@category.Slug">@category.Name</a>
+                        </li>
+                    </h7>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,284 @@
+﻿@using CayCanh.Libraries
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<link href="~/public/icon-font/fontawesome.com/css/all.min.css" rel="stylesheet" />
+
+
+@*<body>*@
+
+<section class="maincontent clearfix">
+    <div class="container col-md-9 my-3">
+        <div class="row product_info ">
+            @*<div class="col-md-1">
+
+            </div>*@
+            <div class="col-md-4">
+                <img src="~/public/image/product/@Model.Img"
+                     class="img-fluid card-img-top" alt="..." />
+            </div>
+            <div class=" col-md-5">
+                <h3 class="product-title">@Model.Name</h3>
+                <h5>
+                    <strong>
+                        <del><span class="price text-black-50">@string.Format("{0:0,0}", @Model.Price)</span></del>
+                        <span class="text-danger">@string.Format("{0:0,0}", @Model.PriceSale)</span><sup>đ</sup>
+                    </strong>
+                </h5>
+                <div class="py-3">
+                    <p>@MyString.str_limit(Model.Detail, 300)</p>
+                </div>
+                <div class=" py-3 border-right">
+                    <div class=" row col-md-12">
+                        <div class="col-md-3">
+                            <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                                @*<span>Số lượng: </span>*@
+                                <div class="quantity_selector py-2">
+                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                    <span id="quantity_value">1</span>
+                                    <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <a class="cart" href="@Url.Action("AddCart", "Cart", new { @productid = Model.Id})">
+                                <button class="col-md-12 btn btn-success" type="submit">Thêm Vào Giỏ</button>
+                            </a>
+                        </div>
+                        <div class="py-3 border-right">
+                            <a class="cart" href="@Url.Action("AddCart", "Cart", new { @productid = Model.Id})">
+                                <button class="col-md-12 btn btn-success" type="submit">Mua Ngay</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-bg-light">
+                    <p>Mọi nhu cầu tư vấn về sản phẩm, vui lòng gọi trực tiếp hotline: 0925794461</p>
+                    <div class="">
+                        <h5>Thông tin cửa hàng</h5>
+                        <h6>Cửa hàng tại TP.HCM</h6>
+                        <p>– Địa chỉ: Số 30/10 Dương Quảng Hàm, P5, Gò Vấp, Tp. HCM.</p>
+                        <p>– ĐT: 0925249822 – 0925113243</p>
+                        <h6>Cửa hàng tại Bình Dương</h6>
+                        <p>- Địa chỉ: 45 Tân Lập, Đông Hòa, Dĩ An, Bình Dương.</p>
+                        <p>- ĐT: 0925794461 - 0925499357</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-detail py-5">
+            <h3>Chi Tiết Sản Phẩm</h3>
+            <p>@Html.Raw(Model.Detail)</p>
+        </div>
+
+        <h3>Sản Phẩm Cùng Loại</h3>
+        <div class="row my-5 product-detail text-bg-light">
+            @foreach (var proother in ViewBag.ListOther)
+            {
+                <div class="col-md-3">
+                    <div class="card" style="width:100%">
+                        <a href="~/@proother.Slug">
+                            <img class="card-img-top img-fluid"
+                                 src="~/public/image/product/@proother.Img" alt="@proother.Img" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="text-center font18">
+                                <a class="text-dark" style="text-decoration: none" href="~/@proother.Slug">@proother.Name</a>
+                            </h5>
+                            <h6 class="text-center">
+                                <strong>
+                                    <del><span class="price text-black-50">@string.Format("{0:0,0}", proother.Price)</span></del>
+                                    <span class="text-danger">@string.Format("{0:0,0}", proother.PriceSale)</span><sup>đ</sup>
+                                </strong>
+                            </h6>
+                            @*<h5 class="text-center font18">@proother.Price</h5>*@
+                            <a href="@Url.Action("AddCart", "Cart", new { @productid = proother.Id})"
+                               class="form-control btn btn-success">Đặt mua</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <!---------------comment facebook----------------->
+        <div class="row my-3">
+            <h5>Bình luận</h5>
+            <div class="fb-comments" data-href="https://localhost:44348/@Model.Slug" data-width="" data-numposts="5"></div>
+        </div>
+
+
+        <div class="row">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="0rlhqLwl"></script>
+
+            <?php
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            ?>
+            <div class="fb-comments" data-href="<?php echo $actual_link ?>" data-width="700" data-numposts="10"></div>
+        </div>
+    </div>
+</section>
+<!-- Header -->
+<!--<header class="header trans_300">
+    <!-- Main Navigation -->
+<!--<div class="container single_product_container">
+    <div class="row">
+        <div class="col-lg-7 py-3">
+            <div class="single_product_pics">
+                <div class="row">
+                    <div class="col-lg-9 image_col order-lg-2 order-1">
+                        <div class="single_product_image">
+                            <img class="img-fluid" src="~/public/image/product/sp1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="product_details">
+                <div class="product_details_title">
+                    <h2>Cây Kim Tiền</h2>
+                    <p>hhhh</p>
+                </div>
+                <div class="free_delivery d-flex flex-row align-items-center justify-content-center">-->
+@*<span class="ti-truck"></span><span>free delivery</span>*@
+<!--</div>-->
+@*<strong>
+        <span class="price text-success"><del>@product.Price</del> <sup>đ</sup></span>
+        <span class="text-danger">@product.PriceSale</span><sup>đ</sup>
+    </strong>*@
+<!--<div class="original_price">170000</div>
+<div class="product_price">150000</div>-->
+@*<ul class="star_rating">
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+    </ul>*@
+<!--<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                    <span>Số lượng:</span>
+                    <div class="quantity_selector">
+                        <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                        <span id="quantity_value">1</span>
+                        <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="red_button add_to_cart_button"><a href="#">Mua ngay</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- Tab Mô tả, đánh giá, Thêm thông tin -->
+<!--<div class="tabs_section_container">
+
+    <div class="container">-->
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="tabs_container">
+                <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+                    <li class="tab active" data-active-tab="tab_1"><span>Mô tả</span></li>
+                    <li class="tab" data-active-tab="tab_2"><span>Thông tin thêm</span></li>
+                    <li class="tab" data-active-tab="tab_3"><span>Đánh giá</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+<!--<div class="row">
+    <div class="col">-->
+<!-- Mô tả -->
+<!--@*<div id="tab_1" class="tab_container active">
+        <div class="row">
+            <div class="col-lg-5 desc_col">
+                <div class="tab_title">
+                    <h4>Mô tả</h4>
+                </div>
+                <div class="tab_text_block">
+                    <h5>HHH</h5>
+                    <p>hhhhhh</p>
+                </div>
+                <div class="tab_image">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>*@-->
+<!--<!--Thông tin thêm -->
+<!--<div id="tab_2" class="tab_container">
+    <div class="row">
+        <div class="col additional_info_col">
+            <div class="tab_title additional_info_title">
+                <h4>Thông tin thêm</h4>
+            </div>
+            <p>hhh</p>
+        </div>
+    </div>
+</div>-->
+<!-- Đánh giá -->
+<!--<div id="tab_3" class="tab_container">
+    <div class="row">-->
+<!-- Thêm đánh giá -->
+<!--<div class="col-lg-6 add_review_col">
+    <div class="add_review">
+        <form id="review_form" action="post">
+            <div>
+                <h4>Thêm đánh giá</h4>
+                <input id="review_name" class="form_input input_name" type="text" name="name" placeholder="Tên*" required="required" data-error="Name is required."><br /><br />
+                <input id="review_email" class="form_input input_email" type="email" name="email" placeholder="Email*" required="required" data-error="Valid email is required.">
+            </div>
+            <div>
+                <h4>Đánh giá của bạn</h4>-->
+@*<ul class="user_star_rating">
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+    </ul>*@
+@*<textarea id="review_message" class="input_review" name="message" placeholder="Đánh giá của bạn" rows="4" required data-error="Please, leave us a review."></textarea>
+                                            </div>
+                                            <div class="text-left text-sm-right">
+                                                <button id="review_submit" type="submit" class="class=" btn btn-sm btn-success red_button review_submit_btn trans_300" value="Submit">Gửi</button>
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    </div>-->*@
+
+@*<script src="js/jquery-3.2.1.min.js"></script>
+        <script src="styles/bootstrap4/popper.js"></script>
+        <script src="styles/bootstrap4/bootstrap.min.js"></script>
+        <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="plugins/easing/easing.js"></script>
+        <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+        <script src="js/single_custom.js"></script>
+    </body>
+
+    </html>*@
+
+<!--<div class="row">
+    <div class="col">-->
+<!-- Thanh đường dẫn -->
+<!--<div class="breadcrumbs d-flex flex-row align-items-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+                <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
+            </ul>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,145 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+<!--<section class="maincontent">
+    <div class="container mt-4 mb-4">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h2 class="text-danger"><strong>Giới thiệu</strong></h2>
+                <ul>
+                    <li>
+                        <h6>
+                            Cửa hàng Cây Xinh nơi mua sắm an toàn và uy tín, bởi chúng tôi luôn đề cao tiêu chí mang đến cho quý khách những sản phẩm đẹp, chất lượng nhất với giá cả luôn phải chăng.
+                        </h6>
+                        <h6>
+                            Cửa hàng Cây Xinh chuyên cung cấp:
+                        </h6>
+                        <h6>
+                            <ul>
+                                - Những loại cây cảnh đẹp tốt.
+                                <br />
+                                - Dụng cụ trồng chăm sóc cây.
+                                <br />
+                                - Đất trồng và phân bón.
+                            </ul>
+                        </h6>
+                        <h6>
+                            Cửa hàng có nhiều loại cây cảnh, bonsai đẹp, đa dạng và phong phú với nhiều kích thước lớn nhỏ nhằm phục vụ, đáp ứng nhu cầu và mục đích sự dụng của khách hàng.
+                        </h6>
+                        <h6>
+                            Đặc biệt, hiện nay cửa hàng đang hợp tác cùng với các nhà vườn ở nhiều nơi nhằm cung cấp sản phẩm mới và tăng tính đa dạng của sản phẩn giúp khách hàng có nhiều sự lựa chọn.
+                        </h6>
+                        <h6>
+                            Cửa hàng Cây Xinh hiện nay đang kết hợp giữa bán trực tiếp tại cửa hàng với hình thức bán hàng online luôn luôn đảm bảo uy tín và chất lượng về sản phẩm (Nếu trong quá trình mua - bán hàng xảy ra lỗi từ phía cửa hàng, chúng tôi sẽ hoàn trả tiền và bồi thường thiệt hại cho quý khách).
+                        </h6>
+                    </li>
+                    <h6>
+                        Mọi thắc mắc, tư vấn và đóng góp ý kiến xin liên hệ với chúng tôi qua:
+                    </h6>
+                    <li>
+                        <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: 45 Tân Lập, Đông Hòa, Dĩ An, Bình Dương.
+                    </li>
+                    <li>
+                        <p>
+                            <i class="fas fa-phone-square"></i> Số Điện Thoại: 0925794461-->
+                            @*<a href=""> 0925794461 </a>*@
+                        <!--</p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="fas fa-envelope"></i> Email: cayxinh@gmail.com-->
+                            @*<a href="cayxinh@gmail.com">cayxinh@gmail.com</a></p>*@
+                    <!--</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 py-5">-->
+                @*<img src="public/images/gioithieu.jpg" class="img-fluid" alt="gioithieu">*@
+                <!--<img src="~/public/image/gioithieu/gt2.jpg" class="img-fluid" alt="gioithieu" />
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<section class="maincontent clearfix main mt-2 text-bg-light">
+    <div class="container my-2 py-4 mt-4 mb-4">
+        <div class="row">
+            <div class=" col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ProductBuyHot", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ChooseByPrice", "Module")
+                </div>
+
+                @*<div class="sidebar py-2">
+                        @Html.Action("ProductBuyHot1", "Module")
+                    </div>*@
+                <div class="sidebar py-2">
+                    @Html.Action("ProductInterested", "Module")
+                </div>
+                <div class="sidebar py-2">
+                    @Html.Action("ContactSidebar", "Module")
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-5">
+                
+                <ul>
+                    <li>
+                        <h2 class="text-danger"><strong>Giới thiệu</strong></h2>
+                        <h6>
+                            Cửa hàng Cây Xinh nơi mua sắm an toàn và uy tín, bởi chúng tôi luôn đề cao tiêu chí mang đến cho quý khách những sản phẩm đẹp, chất lượng nhất với giá cả luôn phải chăng.
+                        </h6>
+                        <h6>
+                            Cửa hàng Cây Xinh chuyên cung cấp:
+                        </h6>
+                        <h6>
+                            <ul>
+                                - Những loại cây cảnh đẹp tốt.
+                                <br />
+                                - Dụng cụ trồng chăm sóc cây.
+                                <br />
+                                - Đất trồng và phân bón.
+                            </ul>
+                        </h6>
+                        <h6>
+                            Cửa hàng có nhiều loại cây cảnh, bonsai đẹp, đa dạng và phong phú với nhiều kích thước lớn nhỏ nhằm phục vụ, đáp ứng nhu cầu và mục đích sự dụng của khách hàng.
+                        </h6>
+                        <h6>
+                            Đặc biệt, hiện nay cửa hàng đang hợp tác cùng với các nhà vườn ở nhiều nơi nhằm cung cấp sản phẩm mới và tăng tính đa dạng của sản phẩn giúp khách hàng có nhiều sự lựa chọn.
+                        </h6>
+                        <h6>
+                            Cửa hàng Cây Xinh hiện nay đang kết hợp giữa bán trực tiếp tại cửa hàng với hình thức bán hàng online luôn luôn đảm bảo uy tín và chất lượng về sản phẩm (Nếu trong quá trình mua - bán hàng xảy ra lỗi từ phía cửa hàng, chúng tôi sẽ hoàn trả tiền và bồi thường thiệt hại cho quý khách).
+                        </h6>
+                    </li>
+                    <h6>
+                        Mọi thắc mắc, tư vấn và đóng góp ý kiến xin liên hệ với chúng tôi qua:
+                    </h6>
+                    <li>
+                        <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: 45 Tân Lập, Đông Hòa, Dĩ An, Bình Dương.
+                    </li>
+                    <li>
+                        <p>
+                            <i class="fas fa-phone-square"></i> Số Điện Thoại: 0925794461
+                            @*<a href=""> 0925794461 </a>*@
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="fas fa-envelope"></i> Email: cayxinh@gmail.com
+                            @*<a href="cayxinh@gmail.com">cayxinh@gmail.com</a></p>*@
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 py-5">
+                @*<img src="public/images/gioithieu.jpg" class="img-fluid" alt="gioithieu">*@
+                <img src="~/public/image/gioithieu/gt2.jpg" class="img-fluid" alt="gioithieu" />
+            </div>
+        </div>
+    </div>
+</section>

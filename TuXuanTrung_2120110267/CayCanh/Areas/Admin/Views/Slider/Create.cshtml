@@ -1,0 +1,91 @@
+﻿@model CayCanh.Models.Slider
+
+@{
+    ViewBag.Title = "Thêm slider";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="stylesheet" href="~/public/icon-font/fontawesome.com/css/all.min.css" />
+    ;
+}
+
+
+@using (Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    //code khai báo upload mẫu tin ở dòng trên 
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger">
+                            THÊM SLIDER
+                        </strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-floppy-disk"></i>Lưu</button>
+                        <a href="@Url.Action("Index","Slider")" class="btn btn-sm btn-info">
+                            <i class="fa-solid fa-rotate-left"></i>Quay về danh sách
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="md-3">
+                            <label for="name"> Tên slider </label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="md-3">
+                            <label for="link"> Liên kết </label>
+                            @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label for="Img"><strong>Chọn hình ảnh</strong></label>
+                                <input name="Img" type="file" class="input-group"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="Position"> Vị trí  </label>
+                                @Html.DropDownListFor(
+                                    model => model.Position,
+                                    new[] {
+                                        new SelectListItem {Text="Slideshow", Value="Slideshow"},
+                                        new SelectListItem {Text="Quảng cáo", Value="ads"},
+                                    },
+                                    null,
+                                    new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="ParentId"> Trạng thái </label>
+                                @Html.DropDownListFor(
+                                    model => model.Status,
+                                    new[] {
+                                        new SelectListItem {Text="Chưa xuất bản", Value="2"},
+                                        new SelectListItem {Text="Xuất bản", Value="1"},
+                                    },
+                                    null,
+                                    new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <button class="btn btn-success btn-sm" type="submit"><i class="fa-solid fa-floppy-disk"></i>Lưu</button>
+                <a href="@Url.Action("Index","Slider")" class="btn btn-sm btn-info">
+                    <i class="fa-solid fa-rotate-left"></i>Quay về danh sách
+                </a>
+            </div>
+        </div>
+    </section>
+}

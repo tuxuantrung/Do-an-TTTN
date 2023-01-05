@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CayCanh.Models.Menu>
+@{ 
+    var menu_item = ViewBag.Row_Menu;
+}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="@menu_item.Link" aria-expanded="false">
+        @menu_item.Name
+    </a>
+    <ul class="dropdown-menu">
+        @foreach (var menu in Model)
+        {
+            <li><a class="dropdown-item" href="~/@menu.Link">@menu.Name</a></li>
+        }
+    </ul>
+</li>

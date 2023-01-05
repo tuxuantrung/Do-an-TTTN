@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CayCanh.Models.Post>
+@using CayCanh.Libraries
+
+@{
+    var topic = ViewBag.Topic;
+}
+@{
+    ViewBag.Title = "PostTopic";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container my-3 py-4">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="category-tilte position-relative">
+                    <h2 class="text-center">@topic.Name</h2>
+                </div>
+                @foreach (var post in Model)
+                {
+                    <div class="row my-4">
+                        <div class="col-md-3">
+                            <a href="~/@post.Slug">
+                                <img src="~/public/image/post/@post.Img"
+                                     class="img-fluid" alt="..." />
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <h4><a href="~/@post.Slug">@post.Name</a></h4>
+                            <p>@MyString.str_limit(post.Detail, 1000)</p>
+                            <div class="text-right"><a href="~/@post.Slug">Xem thêm</a></div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

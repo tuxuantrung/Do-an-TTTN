@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<link href="~/public/icon-font/fontawesome.com/css/all.min.css" rel="stylesheet" />
+
+
+<div class="super_container">
+    <div class="container contact_container">
+        <div class="row">
+            <!--<div class="col">-->
+            <!-- Breadcrumbs -->
+            <!--<div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a style="text-decoration: none" href="index.html">Home</a></li>
+                        <li class="active"><a style="text-decoration: none" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>-->
+        </div>
+
+        <!-- Google map -->
+        <div class="text-danger py-3">
+            <h3>Liên hệ</h3>
+        </div>
+
+        <div class="row py-3">
+            <div class="col">
+                <div id="google_map">
+                    <div class="map_container">
+                        <div id="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.157016584766!2d106.80703551474981!3d10.875659592254225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8aed3808359%3A0xe933ad142813142e!2zNDUgVMOibiBM4bqtcCwgxJDDtG5nIEhvw6AsIETEqSBBbiwgQsOsbmggRMawxqFuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1669830475198!5m2!1svi!2s"
+                                    width="1000" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liên hệ chúng tôi -->
+
+        <div class="row">
+
+            <div class="col-lg-6 contact_col">
+                <div class="contact_contents">
+                    <h4>Liên hệ chúng tôi</h4>
+                    <p>Có nhiều cách để liên hệ với chúng tôi. Bạn có thể gửi tin nhắn cho chúng tôi, gọi cho chúng tôi hoặc gửi email, chọn những gì phù hợp với bạn nhất.</p>
+                    <div>
+                        <ul>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: 45 Tân Lập, Đông Hòa, Dĩ An, Bình Dương.
+                            </li>
+                            <li>
+                                <p>
+                                    <i class="fas fa-phone-square"></i> Số Điện Thoại: 0925794461
+
+                                </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i> Email: cayxinh@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <p>Giờ mở cửa: 8.00-18.00 Thứ Hai-Thứ Bảy</p>
+                        <p>Chủ nhật: Đóng cửa</p>
+                    </div>
+                </div>
+
+                <!-- Theo dõi chúng tôi -->
+
+                <div class="follow_us_contents">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="">
+                        <a href="#" style=""><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" style=""><i class="fa-brands fa-google-plus" aria-hidden="true"></i></a>
+                        <a href="#" style=""><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                    @*background-color: #0000FF
+                        background-color: #FF0000
+                        background-color: #FF00FF*@
+
+                </div>
+            </div><br /><br />
+            <div class="col-lg-6 get_in_touch_col">
+                <div class="get_in_touch_contents">
+                    <h4>Liên lạc với chúng tôi!</h4>
+                    <p>Điền vào mẫu dưới đây để nhận được hỗ trợ.</p>
+                    <form action="post">
+                        <div>
+                            <input id="input_name" class="form_input input_name input_ph" type="text" name="name" placeholder="Tên" required="required" data-error="Name is required."><br /><br />
+                            <input id="input_email" class="form_input input_email input_ph" type="email" name="email" placeholder="Email" required="required" data-error="Valid email is required."><br /><br />
+                            <input id="input_website" class="form_input input_website input_ph" type="url" name="name" placeholder="Website" required="required" data-error="Name is required."><br /><br />
+                            <textarea id="input_message" class="input_ph input_message" name="message" placeholder="Message" rows="3" required data-error="Please, write us a message."></textarea>
+                        </div>
+                        <div>
+                            @*<button id="review_submit" type="submit" class="red_button message_submit_btn trans_300" value="Submit">Gửi tin</button>*@
+                            <a href="#">
+                                <button class="btn btn-success text-dark" type="submit">Gửi tin</button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+

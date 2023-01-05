@@ -1,0 +1,105 @@
+﻿@*@using PagedList;
+    @using PagedList.Mvc;
+    @model PagedList.IPagedList<CayCanh.Models.Contact>*@
+
+
+@model IEnumerable<CayCanh.Models.Contact>
+
+@{
+    ViewBag.Title = "Tất cả liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="stylesheet" href="~/public/icon-font/fontawesome.com/css/all.min.css" />
+    ;
+}
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger">
+                        TẤT CẢ LIÊN HỆ
+                    </strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Create","Contact")" class="btn btn-sm btn-success">
+                        <i class="fa-solid fa-plus"></i>Thêm
+                    </a>
+                    <a href="@Url.Action("Trash","Contact")" class="btn btn-sm btn-danger">
+                        <i class="fa-solid fa-trash"></i>Thùng rác
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.Partial("Message")
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:20px;" class="text-center">#</th>
+                    <th style="width:20px;" class="text-center">Mã khách hàng</th>
+                    <th style="width:100px;" class="text-center">Tên khách hàng</th>
+
+                    <th style="width:100px;" class="text-center">Email</th>
+
+                    <th style="width:100px;" class="text-center">Số điện thoại</th>
+
+                    <th style="width:100px;" class="text-center">Chi tiết</th>
+                    <th style="width:200px;" class="text-center">Chức năng</th>
+                    <th style="width:20px;" class="text-center">Mã loại</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+                        <td>@item.UseId</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Detail</td>
+                        <td class="text-center">
+                            @if (item.Status == 1)
+                            {
+                                <a href="@Url.Action("Status","Contact",new { id = item.Id })
+                                                   " class="btn btn-sm btn-success">
+                                    <i class="fa-solid fa-toggle-on"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Status","Contact",new { id = item.Id })
+                                                   " class="btn btn-sm btn-danger">
+                                    <i class="fa-solid fa-tongle-off"></i>
+                                </a>
+                            }
+                            <a href="@Url.Action("Edit","Contact",new { id = item.Id })" class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="@Url.Action("Details","Contact",new { id = item.Id })" class="btn btn-sm btn-info">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="@Url.Action("Delete","Contact",new { id = item.Id })" class="btn btn-sm btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+                        </td>
+                        <td class="text-center">@item.Id</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-footer text-right">
+            <a href="@Url.Action("Create","Contact")" class="btn btn-sm btn-success">
+                <i class="fa-solid fa-plus"></i>Thêm
+            </a>
+            <a href="@Url.Action("Trash","Contact")" class="btn btn-sm btn-danger">
+                <i class="fa-solid fa-trash"></i>Thùng rác
+            </a>
+        </div>
+    </div>
+</section>
+@*Trang @Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new {page, currentFilter = ViewBag.CurrentFilter }))*@
+

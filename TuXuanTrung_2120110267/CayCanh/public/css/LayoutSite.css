@@ -1,0 +1,22 @@
+﻿.bg-mainmenu {
+    background-color: #9ACD32;
+}
+
+.bg-footer {
+    background-color: #000000;
+}
+.lienket a {
+    text-decoration: none
+}
+/*------------Chi tiết sản phẩm-----------------*/
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.ul {
+    list-style: none;
+}
+ul, ol {
+    list-style: none;
+}
